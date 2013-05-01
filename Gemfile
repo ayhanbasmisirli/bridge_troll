@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.0.0'
-gem 'rails', '3.2.14'
+gem 'rails', '4.0.1'
 gem 'devise', '~> 3.0.0'
 gem 'thin'
 gem 'jquery-rails'
@@ -15,31 +15,25 @@ gem 'gravatar_image_tag'
 gem 'simple_form'
 gem 'sentry-raven'
 gem 'rack-canonical-host'
+gem 'protected_attributes'
 
 group :production do
   gem 'pg'
   gem 'rails_12factor'
 end
 
-group :assets do
-  gem 'turbo-sprockets-rails3'
-  gem 'handlebars_assets'
-  gem 'jquery-datatables-rails'
-  gem 'sass-rails'
-  # sass_rails_patch allows 'css.scss.erb' to work.
-  # delete this when upgrading to rails 4 (sass-rails 4.0.0 incorporates a similar fix)
-  gem 'sass_rails_patch'
-  gem 'compass-rails'
-  gem 'coffee-rails'
-  gem 'uglifier'
-  gem 'bootstrap-sass-rails', '~> 2.3.0'
-  gem 'font-awesome-rails'
-  gem 'jquery-ui-rails'
-  gem 'backbone-on-rails'
-end
+gem 'handlebars_assets'
+gem 'jquery-datatables-rails'
+gem 'sass-rails'
+gem 'compass-rails', '2.0.alpha.0'
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'bootstrap-sass-rails', '~> 2.3.0'
+gem 'font-awesome-rails'
+gem 'jquery-ui-rails'
+gem 'backbone-on-rails'
 
 group :development do
-  gem 'sextant'
   gem 'quiet_assets'
   gem 'guard-rspec'
   gem 'rb-fsevent'
