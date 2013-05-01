@@ -6,6 +6,8 @@ class Event < ActiveRecord::Base
 
   belongs_to :location, counter_cache: true
 
+  attr_accessible :public_email, :time_zone, :title, :event_sessions_attributes, :details
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :course
 
