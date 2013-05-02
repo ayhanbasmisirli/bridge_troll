@@ -1,6 +1,8 @@
 class Rsvp < ActiveRecord::Base
   extend ActiveHash::Associations::ActiveRecordExtensions
 
+  attr_accessible :role_id, :teaching_experience, :subject_experience, :needs_childcare, :childcare_info
+
   belongs_to :bridgetroll_user, class_name: 'User', foreign_key: :user_id
   belongs_to :meetup_user, class_name: 'MeetupUser', foreign_key: :user_id
   belongs_to :user, polymorphic: true
@@ -19,6 +21,7 @@ class Rsvp < ActiveRecord::Base
   scope :needs_childcare, -> { where("childcare_info <> ''") }
 
   MAX_EXPERIENCE_LENGTH = 250
+
   with_options(if: Proc.new {|rsvp| rsvp.role == Role::VOLUNTEER && !rsvp.historical? }) do |for_volunteers|
     for_volunteers.validates_presence_of :teaching_experience, :subject_experience
     for_volunteers.validates_length_of :teaching_experience, :subject_experience, :in => 10..MAX_EXPERIENCE_LENGTH
@@ -28,7 +31,6 @@ class Rsvp < ActiveRecord::Base
     for_students.validates_presence_of :operating_system_id, :class_level
     for_students.validates_inclusion_of :class_level, in: (1..5)
   end
-
 
   belongs_to_active_hash :role
   belongs_to_active_hash :volunteer_assignment
